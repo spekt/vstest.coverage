@@ -5,10 +5,9 @@ clone_depth: 1
 
 build_script:
     - cmd: dotnet --info
-    # TODO: Uncomment when we have the solution checked in
-    #- cmd: dotnet pack -p:PackageVersion=%APPVEYOR_BUILD_VERSION%
-    #- cmd: dotnet pack -c Release -p:PackageVersion=%APPVEYOR_BUILD_VERSION%
-    #- cmd: dotnet test -p:PackageVersion=%APPVEYOR_BUILD_VERSION% src/Coverage.Report.Tests/Coverage.Report.Tests.csproj
+    - cmd: dotnet pack -p:PackageVersion=%APPVEYOR_BUILD_VERSION%
+    - cmd: dotnet pack -c Release -p:PackageVersion=%APPVEYOR_BUILD_VERSION%
+    - cmd: dotnet test -p:PackageVersion=%APPVEYOR_BUILD_VERSION% src/Coverage.Report.Tests/Coverage.Report.Tests.csproj
 
 test: off
 
