@@ -5,10 +5,10 @@ matrix:
         - dotnet: 2.1
           mono: latest
 
-# TODO: Uncomment when we have the solution checked in
-#solution: vstest.coverage.sln
+solution: vstest.coverage.sln
 
 script:
     - dotnet --info
-    #- dotnet pack
-    #- dotnet test src/Coverage.Report.Tests/Coverage.Report.Tests.csproj
+    - dotnet pack
+    - dotnet test src/Coverage.Report.Tests/Coverage.Report.Tests.csproj
+    - dotnet test src/CodeCoverageToLcovConverterTests/CodeCoverageReaderTests.csproj

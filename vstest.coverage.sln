@@ -9,9 +9,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coverage.Report.Tests", "sr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{237F763A-C38D-4190-A970-2E9F14F5FF86}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCoverageReader", "src\CodeCoverageToLcovConverter\CodeCoverageReader.csproj", "{76A0FCB5-40BC-4A0B-A165-6207EFB222DA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{914F9B9A-7FC7-48F3-9770-E96A4E608B95}"
+	ProjectSection(SolutionItems) = preProject
+		.appveyor.yml = .appveyor.yml
+		.travis.yml = .travis.yml
+		README.md = README.md
+	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCoverageReaderTests", "src\CodeCoverageToLcovConverterTests\CodeCoverageReaderTests.csproj", "{188402F9-DB0B-4ACA-B03F-965B906673E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCoverageReader", "src\CodeCoverageToLcovConverter\CodeCoverageReader.csproj", "{16EB7C01-C130-4D62-A278-08380C191E38}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeCoverageReaderTests", "src\CodeCoverageToLcovConverterTests\CodeCoverageReaderTests.csproj", "{815DD963-BBFE-453F-9DFB-CD24577A4006}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,14 +34,14 @@ Global
 		{555EF022-4E3B-48BA-8662-7587C2D136B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{555EF022-4E3B-48BA-8662-7587C2D136B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{555EF022-4E3B-48BA-8662-7587C2D136B0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{76A0FCB5-40BC-4A0B-A165-6207EFB222DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{76A0FCB5-40BC-4A0B-A165-6207EFB222DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{76A0FCB5-40BC-4A0B-A165-6207EFB222DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{76A0FCB5-40BC-4A0B-A165-6207EFB222DA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{188402F9-DB0B-4ACA-B03F-965B906673E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{188402F9-DB0B-4ACA-B03F-965B906673E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{188402F9-DB0B-4ACA-B03F-965B906673E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{188402F9-DB0B-4ACA-B03F-965B906673E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16EB7C01-C130-4D62-A278-08380C191E38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16EB7C01-C130-4D62-A278-08380C191E38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16EB7C01-C130-4D62-A278-08380C191E38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16EB7C01-C130-4D62-A278-08380C191E38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{815DD963-BBFE-453F-9DFB-CD24577A4006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{815DD963-BBFE-453F-9DFB-CD24577A4006}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{815DD963-BBFE-453F-9DFB-CD24577A4006}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{815DD963-BBFE-453F-9DFB-CD24577A4006}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,7 +49,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{B8B22656-506D-4BC5-BEA7-3E9BDEA3A427} = {237F763A-C38D-4190-A970-2E9F14F5FF86}
 		{555EF022-4E3B-48BA-8662-7587C2D136B0} = {237F763A-C38D-4190-A970-2E9F14F5FF86}
-		{76A0FCB5-40BC-4A0B-A165-6207EFB222DA} = {237F763A-C38D-4190-A970-2E9F14F5FF86}
+		{16EB7C01-C130-4D62-A278-08380C191E38} = {237F763A-C38D-4190-A970-2E9F14F5FF86}
+		{815DD963-BBFE-453F-9DFB-CD24577A4006} = {237F763A-C38D-4190-A970-2E9F14F5FF86}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {13EDC7D7-8AE9-47E4-9FA2-E1CFCB3581E6}

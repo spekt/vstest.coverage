@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <VstestCoverageRoot Condition="$(VstestCoverageRoot) == ''">$(MSBuildThisFileDirectory)../../</VstestCoverageRoot>
+    <VstestCoveragePrefix>0.0.1</VstestCoveragePrefix>
+  </PropertyGroup>
+  <PropertyGroup>
+    <!-- Versioning is defined from the build script. Use a default dev build if it's not defined.
+         Sets the AssemblyVersion, AssemblyFileVersion and AssemblyInformationalVersion -->
+    <Version Condition="'$(Version)' == ''">$(VstestCoveragePrefix)-dev</Version>
+
+    <!-- Override the AssemblyVersion as 15.0.0 since protocol depends on this version for
+         serialization. This is also defined in build script. -->
+    <AssemblyVersion Condition="'$(AssemblyVersion)' == ''">1.0.0</AssemblyVersion>
+
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DefineConstants>$(DefineConstants);CODE_ANALYSIS</DefineConstants>
+  </PropertyGroup> 
+
+  <Import Project="$(MSBuildThisFileDirectory)Vstest.Coverage.Dependencies.props" />
+
+  <!-- Common dependencies for all projects -->
+  <ItemGroup>
+    <AdditionalFiles Include="$(VstestCoverageRoot)scripts\stylecop.json">
+      <Link>stylecop.json</Link>
+    </AdditionalFiles>
+  </ItemGroup>
+
+  <!-- Test project settings -->
+  <Choose>
+    <When Condition="$(TestProject) == 'true'"> 
+      <PropertyGroup>
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+      </PropertyGroup>
+
+      <ItemGroup>
+        <PackageReference Include="MSTest.TestFramework">
+          <Version>$(MSTestVersion)</Version>
+        </PackageReference>
+        <PackageReference Include="MSTest.TestAdapter">
+          <Version>$(MSTestVersion)</Version>
+        </PackageReference>
+        <PackageReference Include="Moq">
+          <Version>$(MoqVersion)</Version>
+        </PackageReference>
+        <PackageReference Include="Microsoft.NET.Test.Sdk">
+          <Version>$(NETTestSdkPreviousVersion)</Version>
+        </PackageReference>
+      </ItemGroup>
+    </When>
+  </Choose>
+
+  <!-- Code analysis settings -->
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>$(VstestCoverageRoot)scripts/stylecop.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet Condition="$(TestProject) == 'true'">$(VstestCoverageRoot)scripts/stylecop.test.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+</Project>

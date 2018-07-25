@@ -10,6 +10,10 @@ namespace Spekt.Vstest.Coverages
     [TestClass]
     public class CodeCoverageReaderTests
     {
+        private readonly string RelatePathToParseCoverageFileWithOneSourceAndOneLineCovered = Path.Combine("TestAssets", "ParseCoverageFileWithOneSourceAndOneLineCovered.xml");
+        private readonly string RelatePathToParseCoverageFileWithTwoSourcesAndOneMultipleLinesCovered = Path.Combine("TestAssets", "ParseCoverageFileWithTwoSourcesAndOneMultipleLinesCovered.xml");
+        private readonly string RelatePathToParseCoverageFileWithTwoSourcesAndOneMultipleLinesCoveredSomePartiallyCovered = Path.Combine("TestAssets", "ParseCoverageFileWithTwoSourcesAndOneMultipleLinesCoveredSomePartiallyCovered.xml");
+
         private CodeCoverageReader codeCoverageReader;
 
         public CodeCoverageReaderTests()
@@ -34,7 +38,7 @@ namespace Spekt.Vstest.Coverages
         [TestMethod]
         public void ParseCoverageFileWithOneSourceAndOneLineCovered()
         {
-            var coverageFileContents = XDocument.Parse(File.ReadAllText(@"TestAssets\ParseCoverageFileWithOneSourceAndOneLineCovered.xml"));
+            var coverageFileContents = XDocument.Parse(File.ReadAllText(RelatePathToParseCoverageFileWithOneSourceAndOneLineCovered));
             var nameSpace = coverageFileContents.Root.Name.Namespace;
             var coverageData = this.codeCoverageReader.ParseCoverageFile(coverageFileContents, nameSpace);
             var expectedSourceFileNames = new List<string> { @"C:\Users\shrer\Source\Repos\CodeCoverageToLcovConverter\CodeCoverageToLcovConverter\Class1.cs" };
@@ -45,7 +49,7 @@ namespace Spekt.Vstest.Coverages
         [TestMethod]
         public void ParseCoverageFileWithTwoSourcesAndOneMultipleLinesCovered()
         {
-            var coverageFileContents = XDocument.Parse(File.ReadAllText(@"TestAssets\ParseCoverageFileWithTwoSourcesAndOneMultipleLinesCovered.xml"));
+            var coverageFileContents = XDocument.Parse(File.ReadAllText(RelatePathToParseCoverageFileWithTwoSourcesAndOneMultipleLinesCovered));
             var nameSpace = coverageFileContents.Root.Name.Namespace;
             var coverageData = this.codeCoverageReader.ParseCoverageFile(coverageFileContents, nameSpace);
             var expectedSourceFileNames = new List<string> { @"C:\Users\shrer\Source\Repos\CodeCoverageToLcovConverter\CodeCoverageToLcovConverter\Class1.cs",
@@ -58,7 +62,7 @@ namespace Spekt.Vstest.Coverages
         [TestMethod]
         public void ParseCoverageFileWithTwoSourcesAndOneMultipleLinesCoveredSomePartiallyCovered()
         {
-            var coverageFileContents = XDocument.Parse(File.ReadAllText(@"TestAssets\ParseCoverageFileWithTwoSourcesAndOneMultipleLinesCoveredSomePartiallyCovered.xml"));
+            var coverageFileContents = XDocument.Parse(File.ReadAllText(RelatePathToParseCoverageFileWithTwoSourcesAndOneMultipleLinesCoveredSomePartiallyCovered));
             var nameSpace = coverageFileContents.Root.Name.Namespace;
             var coverageData = this.codeCoverageReader.ParseCoverageFile(coverageFileContents, nameSpace);
             var expectedSourceFileNames = new List<string> { @"C:\Users\shrer\Source\Repos\CodeCoverageToLcovConverter\CodeCoverageToLcovConverter\Class1.cs",

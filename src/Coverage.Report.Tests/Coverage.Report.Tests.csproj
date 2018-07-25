@@ -1,28 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <VstestCoverageRoot Condition="$(VstestCoverageRoot) == ''">..\..\</VstestCoverageRoot>
+    <TestProject>true</TestProject>
+  </PropertyGroup>
+  <Import Project="$(VstestCoverageRoot)scripts/build/Vstest.Coverage.Settings.targets" />
+  
+  <PropertyGroup>
     <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
     <AssemblyName>Spekt.Vstest.Coverage.Report.Tests</AssemblyName>
-    <WarningsAsErrors>true</WarningsAsErrors>
-    <EnableCodeAnalysis>true</EnableCodeAnalysis>
-    <MSTestVersion>1.3.2</MSTestVersion>
-    <NETTestSdkPreviousVersion>15.8.0</NETTestSdkPreviousVersion>
-    <MoqVersion>4.9.0</MoqVersion>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="..\Coverage.Report\Coverage.Report.csproj" />
-    <PackageReference Include="MSTest.TestFramework">
-      <Version>$(MSTestVersion)</Version>
-    </PackageReference>
-    <PackageReference Include="MSTest.TestAdapter">
-      <Version>$(MSTestVersion)</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.NET.Test.Sdk">
-      <Version>$(NETTestSdkPreviousVersion)</Version>
-    </PackageReference>
-    <PackageReference Include="Moq">
-      <Version>$(MoqVersion)</Version>
-    </PackageReference>
   </ItemGroup>
 </Project>
