@@ -1,0 +1,24 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Spekt.VSTest.Coverage.Report</id>
+    <version>$version$</version>
+    <title>Spekt.VSTest.Coverage.Report</title>
+    <!-- TODO add other contributors -->
+    <authors>codito,smadala</authors>
+    <owners>codito,smadala</owners>
+    <projectUrl>https://github.com/spekt/vstest.coverage</projectUrl>
+    <description>Code coverage reporting for vstest platform</description>
+    <licenseUrl>https://github.com/spekt/vstest.coverage/blob/master/LICENSE</licenseUrl>
+  </metadata>
+  <files>
+    <file src="Spekt.Vstest.Coverage.Report.dll" target="build\_common\" />
+    <file src="CodeCoverageReader.dll" target="build\_common\" />
+
+    <!-- Net Core -->
+    <!-- <file src="Coverage.Report.props" target="build\netstandard1.0\" /> -->
+
+    <!-- Desktop -->
+    <!-- <file src="Coverage.Report.props" target="build\net45\" /> -->
+  </files>
+</package>

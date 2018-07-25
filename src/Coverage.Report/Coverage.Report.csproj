@@ -7,6 +7,12 @@
   <PropertyGroup>
     <AssemblyName>Spekt.Vstest.Coverage.Report</AssemblyName>
     <TargetFramework>netstandard2.0</TargetFramework>
+
+    <!-- Nuget pack configuration -->
+    <NuspecFile>bin\$(Configuration)\$(TargetFramework)\Coverage.Report.nuspec</NuspecFile>
+    <NuspecProperties>version=$(Version)</NuspecProperties>
+    <IncludeContentInPack>false</IncludeContentInPack>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Build.Framework">
@@ -16,4 +22,13 @@
       <Version>$(Microsoft_Build_Utilities_Core_Version)</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CodeCoverageToLcovConverter\CodeCoverageReader.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Coverage.Report.nuspec">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

@@ -5,20 +5,20 @@ clone_depth: 1
 
 build_script:
     - cmd: dotnet --info
-    - cmd: dotnet pack -p:PackageVersion=%APPVEYOR_BUILD_VERSION%
-    - cmd: dotnet pack -c Release -p:PackageVersion=%APPVEYOR_BUILD_VERSION%
-    - cmd: dotnet test -p:PackageVersion=%APPVEYOR_BUILD_VERSION% src/Coverage.Report.Tests/Coverage.Report.Tests.csproj
-    - cmd: dotnet test -p:PackageVersion=%APPVEYOR_BUILD_VERSION% src/CodeCoverageToLcovConverterTests/CodeCoverageReaderTests.csproj
+    - cmd: dotnet pack -p:Version=%APPVEYOR_BUILD_VERSION%
+    - cmd: dotnet pack -c Release -p:Version=%APPVEYOR_BUILD_VERSION%
+    - cmd: dotnet test -p:Version=%APPVEYOR_BUILD_VERSION% src/Coverage.Report.Tests/Coverage.Report.Tests.csproj
+    - cmd: dotnet test -p:Version=%APPVEYOR_BUILD_VERSION% src/CodeCoverageToLcovConverterTests/CodeCoverageReaderTests.csproj
 
 test: off
 
-#artifacts:
-    #- path: 'src\TODO\bin\Release\*.nupkg'
+artifacts:
+    - path: 'src\Coverage.Report\bin\Release\*.nupkg'
 
-#deploy:
-    #provider: NuGet
-    #server: https://www.myget.org/F/spekt/api/v2
-    #api_key:
-        #secure: 2C7HbSlU1kcOJ3nzZCpKR97cfWAg/8t38XDf8ywCbJI1ymt93ulfPqT67ugWuMla
-    #artifact: /.*\.nupkg/
-    #skip_symbols: true
+deploy:
+    provider: NuGet
+    server: https://www.myget.org/F/spekt/api/v2
+    api_key:
+        secure: 2C7HbSlU1kcOJ3nzZCpKR97cfWAg/8t38XDf8ywCbJI1ymt93ulfPqT67ugWuMla
+    artifact: /.*\.nupkg/
+    skip_symbols: true
