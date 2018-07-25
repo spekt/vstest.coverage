@@ -3,6 +3,11 @@
 [![Build Status](https://travis-ci.com/spekt/vstest.coverage.svg?branch=master)](https://travis-ci.com/spekt/vstest.coverage)
 [![Build status](https://ci.appveyor.com/api/projects/status/gds2rdqvixk5q6q5?svg=true)](https://ci.appveyor.com/project/spekt/vstest-coverage)
 
+## Packages
+| Logger | Stable Package | Pre-release Package |
+| ------ | -------------- | ------------------- |
+| Spekt.VSTest.Coverage.Report | [![NuGet](https://img.shields.io/nuget/v/Spekt.VSTest.Coverage.Report.svg)](https://www.nuget.org/packages/Spekt.VSTest.Coverage.Report/) | [![MyGet Pre Release](https://img.shields.io/myget/spekt/vpre/Spekt.VSTest.Coverage.Report.svg)](https://www.myget.org/feed/spekt/package/nuget/Spekt.VSTest.Coverage.Report) |
+
 ## Vision
 Stop .NET(any) developer from shipping a bug. [software failures cost the worldwide economy $1.1 trillion in 2016](https://crossbrowsertesting.com/blog/development/software-bug-cost/).
 
