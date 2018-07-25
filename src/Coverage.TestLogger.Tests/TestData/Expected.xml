@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<results>
+  <modules>
+    <module name="unittestproject7.dll" path="unittestproject7.dll" id="C6B478F1BAE08E4C95002495235EBE4101000000" block_coverage="0.00" line_coverage="0.00" blocks_covered="0" blocks_not_covered="1" lines_covered="0" lines_partially_covered="0" lines_not_covered="2">
+      <functions>
+        <function id="8272" token="0x6000001" name="TestMethod1()" namespace="UnitTestProject7" type_name="UnitTest1" block_coverage="0.00" line_coverage="0.00" blocks_covered="0" blocks_not_covered="1" lines_covered="0" lines_partially_covered="0" lines_not_covered="2">
+          <ranges>
+            <range source_id="0" covered="no" start_line="11" start_column="9" end_line="11" end_column="10" />
+            <range source_id="0" covered="no" start_line="12" start_column="9" end_line="12" end_column="10" />
+          </ranges>
+        </function>
+      </functions>
+      <source_files>
+        <source_file id="0" path="C:\Users\harjain\Documents\Visual Studio 2017\Projects\UnitTestProject7\UnitTestProject7\UnitTest1.cs">
+        </source_file>
+      </source_files>
+    </module>
+  </modules>
+</results>
