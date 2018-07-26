@@ -12,3 +12,4 @@ script:
     - dotnet pack
     - dotnet test src/Coverage.Report.Tests/Coverage.Report.Tests.csproj
     - dotnet test src/CodeCoverageToLcovConverterTests/CodeCoverageReaderTests.csproj
+    - dotnet test src/LcovGeneratorTests/LcovGeneratorTests.csproj

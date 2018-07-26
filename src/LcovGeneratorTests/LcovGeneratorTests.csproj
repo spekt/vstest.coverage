@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <VstestCoverageRoot Condition="$(VstestCoverageRoot) == ''">..\..\</VstestCoverageRoot>
+    <TestProject>true</TestProject>
+  </PropertyGroup>
+
+  <Import Project="$(VstestCoverageRoot)scripts/build/Vstest.Coverage.Settings.targets" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CodeCoverageToLcovConverter\CodeCoverageReader.csproj" />
+    <ProjectReference Include="..\LcovGenerator\LcovGenerator.csproj" />
+  </ItemGroup>
+
+</Project>
