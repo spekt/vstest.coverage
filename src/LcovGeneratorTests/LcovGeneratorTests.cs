@@ -36,7 +36,7 @@ namespace LcovGeneratorTests
             expecedLcovModelData.Add("s1.cs", new Dictionary<int, int> { { 5, 2 }, { 6, 2 }, { 13, 0 } });
             expecedLcovModelData.Add("s2.cs", new Dictionary<int, int> { { 9, 1 }, { 10, 1 }, { 11, 1 }, { 12, 1 } });
 
-            var actualLcovModelData = generator.ModelConverter(codeCoverageDataModel);
+            var actualLcovModelData = generator.GenerateLcovCoverageData(codeCoverageDataModel);
 
             foreach (var modelData in expecedLcovModelData)
             {
@@ -62,7 +62,7 @@ namespace LcovGeneratorTests
             codeCoverageDataModel.Ranges.Add(range2);
             codeCoverageDataModel.Ranges.Add(range3);
 
-            var actualLcovModelData = generator.ModelConverter(codeCoverageDataModel);
+            var actualLcovModelData = generator.GenerateLcovCoverageData(codeCoverageDataModel);
 
             var actualText = actualLcovModelData.ToString();
             Console.WriteLine(actualText);

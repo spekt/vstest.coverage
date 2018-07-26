@@ -14,7 +14,7 @@ namespace Spekt.Vstest.Coverage.LcovGenerator
 
         public LcovModel(Dictionary<string, Dictionary<int, int>> lcovModelData)
         {
-          this.Data = lcovModelData;
+            this.Data = lcovModelData;
         }
 
         public override string ToString()
@@ -39,7 +39,7 @@ namespace Spekt.Vstest.Coverage.LcovGenerator
 
     public class Generator
     {
-        public LcovModel ModelConverter(CodeCoverageDataModel codeCoverageDataModel)
+        public LcovModel GenerateLcovCoverageData(CodeCoverageDataModel codeCoverageDataModel)
         {
             Dictionary<string, Dictionary<int, int>> lcovModelData = new Dictionary<string, Dictionary<int, int>>();
 

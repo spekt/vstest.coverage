@@ -7,9 +7,12 @@ namespace Microsoft.VisualStudio.TestPlatform.Extensions.CoverageLogger
     using System.IO;
     using System.Linq;
     using System.Threading;
+    using System.Xml.Linq;
     using Microsoft.TestPlatform.Extensions.CoverageLogger;
     using Microsoft.VisualStudio.TestPlatform.ObjectModel;
     using Microsoft.VisualStudio.TestPlatform.ObjectModel.Client;
+    using Spekt.Vstest.Coverage;
+    using Spekt.Vstest.Coverage.LcovGenerator;
 
     /// <summary>
     /// Logger for Generating CodeCoverage Analysis
@@ -30,7 +33,7 @@ namespace Microsoft.VisualStudio.TestPlatform.Extensions.CoverageLogger
 
         private static readonly Uri CodeCoverageDataCollectorUri = new Uri(CoverageUri);
 
-        private ManualResetEvent coverageXmlGenerateEvent;
+        private ManualResetEvent summaryCompletedEvent = new ManualResetEvent(false);
 
         private CodeCoverageUtility codeCoverageUtility;
 
@@ -41,6 +44,10 @@ namespace Microsoft.VisualStudio.TestPlatform.Extensions.CoverageLogger
         /// <inheritdoc/>
         public void Initialize(TestLoggerEvents events, string testResultsDirPath)
         {
+            Console.WriteLine("CoverageLogger.Initialize: Initializing Spekt code coverage logger...");
+
+            this.codeCoverageUtility = new CodeCoverageUtility();
+
             if (events == null)
             {
                 throw new ArgumentNullException(nameof(events));
@@ -49,9 +56,10 @@ namespace Microsoft.VisualStudio.TestPlatform.Extensions.CoverageLogger
             // Register for the events.
             events.TestRunComplete += this.TestRunCompleteHandler;
 
-            this.codeCoverageUtility = new CodeCoverageUtility();
+            Console.WriteLine("CoverageLogger.Initialize: Completed Spekt code coverage logger initialization...");
         }
         #endregion
+
 
         #region Event Handlers
 
@@ -74,6 +82,8 @@ namespace Microsoft.VisualStudio.TestPlatform.Extensions.CoverageLogger
             var coverageAttachments = e.AttachmentSets
                 .Where(dataCollectionAttachment => CodeCoverageDataCollectorUri.Equals(dataCollectionAttachment.Uri)).ToArray();
 
+            Console.WriteLine($"CoverageLogger.TestRunCompleteHandler: Found {coverageAttachments.Length} attachments.");
+
             if (coverageAttachments.Any())
             {
                 var codeCoverageFiles = coverageAttachments.Select(coverageAttachment => coverageAttachment.Attachments[0].Uri.LocalPath).ToArray();
@@ -91,17 +101,28 @@ namespace Microsoft.VisualStudio.TestPlatform.Extensions.CoverageLogger
 
                     var summary = this.codeCoverageUtility.GetCoverageSummary(resultFile);
                     Console.WriteLine(summary);
+
+                    var coverageFileContents = XDocument.Parse(File.ReadAllText(resultFile));
+
+                    try
+                    {
+                        var codeCoverageInternalRepresentation = new CodeCoverageReader().ParseCoverageFile(coverageFileContents, coverageFileContents.Root.Name.Namespace);
+                        var lcovFilePath = Path.Combine(new DirectoryInfo(Path.GetDirectoryName(codeCoverageFile)).Parent.FullName, "lcov.info");
+                        File.WriteAllText(lcovFilePath, new Generator().GenerateLcovCoverageData(codeCoverageInternalRepresentation).ToString());
+                    }
+                    catch (Exception err)
+                    {
+                        Console.WriteLine(err);
+                    }
                 }
             }
         }
 
         private string GetCodeCoverageExePath()
         {
-            //TODO: Find the location of Microsoft.CodeCoverage nuget package.
-            // 1. Check "NUGET_PACKAGES" Environment Variable.
-            // 2. Check "NUGET_FALLBACK_PACKAGES" Environment Variable.
-            // 3. Check Visual Studio Install Path and get the location of CodeCoverage.exe
-            return string.Empty;
+            var traceDataCollectorBasePath = Environment.GetEnvironmentVariable("Spekt_TraceDataCollectorDirectoryPath");
+            // TODO: add assert
+            return Path.Combine(traceDataCollectorBasePath, "CodeCoverage");
         }
 
         #endregion

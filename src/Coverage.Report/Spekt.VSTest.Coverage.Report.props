@@ -25,5 +25,15 @@ WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Visible>False</Visible>
     </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\build\_common\LcovGenerator.dll">
+      <Link>LcovGenerator.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\build\_common\CodeCoverageReader.dll">
+      <Link>CodeCoverageReader.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>False</Visible>
+    </Content>
   </ItemGroup>
 </Project>

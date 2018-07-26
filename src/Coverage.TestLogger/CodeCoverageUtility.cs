@@ -19,7 +19,6 @@ namespace Microsoft.TestPlatform.Extensions.CoverageLogger
     {
         private const string CodeCoverageExeRelativePath = @"CodeCoverage.exe";
         private Process vanguardProcess;
-        private ManualResetEvent coverageXmlGenerateEvent;
 
         public static XmlReaderSettings ReaderSettings => new XmlReaderSettings
         {
@@ -27,11 +26,6 @@ namespace Microsoft.TestPlatform.Extensions.CoverageLogger
             IgnoreWhitespace = true,
             DtdProcessing = DtdProcessing.Prohibit
         };
-
-        public CodeCoverageUtility()
-        {
-            this.coverageXmlGenerateEvent = new ManualResetEvent(false);
-        }
 
         public string GetCoverageSummary(string coverageXml)
         {
@@ -98,7 +92,7 @@ namespace Microsoft.TestPlatform.Extensions.CoverageLogger
                         CreateNoWindow = true,
                         FileName = codeCoverageExe,
                         Arguments = arguments,
-                        RedirectStandardError = true
+                        RedirectStandardError = false
                     },
                     EnableRaisingEvents = true
                 };
@@ -134,8 +128,6 @@ namespace Microsoft.TestPlatform.Extensions.CoverageLogger
 
                 this.vanguardProcess.Exited -= this.CodeCoverageExited;
             }
-
-            this.coverageXmlGenerateEvent.Set();
         }
     }
 }

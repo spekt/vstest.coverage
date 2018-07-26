@@ -13,7 +13,8 @@
   </metadata>
   <files>
     <file src="Spekt.Vstest.Coverage.Report.dll" target="tasks\netstandard2.0\" />
-    <file src="CodeCoverageReader.dll" target="tasks\netstandard2.0\" />
+    <file src="CodeCoverageReader.dll" target="build\_common\" />
+    <file src="LcovGenerator.dll" target="build\_common\" />
     <file src="Spekt.Vstest.Coverage.TestLogger.dll" target="build\_common" />
 
     <file src="Spekt.VSTest.Coverage.Report.props" target="build\" /> 

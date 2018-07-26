@@ -9,6 +9,10 @@
     <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="15.8.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CodeCoverageToLcovConverter\CodeCoverageReader.csproj" />
+    <ProjectReference Include="..\LcovGenerator\LcovGenerator.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Update="Resources\CoverageResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

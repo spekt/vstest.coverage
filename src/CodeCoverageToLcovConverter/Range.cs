@@ -3,7 +3,9 @@
     public class Range
     {
         public int StartLine;
+
         public int EndLine;
+
         public bool Covered;
 
         /// <summary>
