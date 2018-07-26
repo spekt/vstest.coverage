@@ -4,7 +4,7 @@
     <id>Spekt.VSTest.Coverage.Report</id>
     <version>$version$</version>
     <title>Spekt.VSTest.Coverage.Report</title>
-    <!-- We have HIGHBAR here, Please understand. -->
+    <!-- Please see https://github.com/spekt/vstest.coverage/graphs/contributors for all contributors -->
     <authors>codito,harshjain2,ShreyasRmsft,smadala</authors>
     <owners>codito,smadala</owners>
     <projectUrl>https://github.com/spekt/vstest.coverage</projectUrl>
