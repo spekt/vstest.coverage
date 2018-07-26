@@ -5,7 +5,7 @@
     <TestProject>true</TestProject>
   </PropertyGroup>
   <Import Project="$(VstestCoverageRoot)scripts/build/Vstest.Coverage.Settings.targets" />
-  
+
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
     <AssemblyName>Spekt.Vstest.Coverage.Report.Tests</AssemblyName>

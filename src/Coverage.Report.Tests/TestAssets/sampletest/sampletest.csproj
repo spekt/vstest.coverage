@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <VstestCoverageRoot Condition="$(VstestCoverageRoot) == ''">..\..\..\..\</VstestCoverageRoot>
+    <TestProject>true</TestProject>
+  </PropertyGroup>
+  <Import Project="$(VstestCoverageRoot)scripts/build/Vstest.Coverage.Settings.targets" />
+  
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Spekt.VSTest.Coverage.Report" Version="$(Version)" />
+  </ItemGroup>
+</Project>

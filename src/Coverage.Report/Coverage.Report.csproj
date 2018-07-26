@@ -24,8 +24,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CodeCoverageToLcovConverter\CodeCoverageReader.csproj" />
+    <ProjectReference Include="..\Coverage.TestLogger\Coverage.TestLogger.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Spekt.VSTest.Coverage.Report.props">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Spekt.VSTest.Coverage.Report.targets">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Coverage.Report.nuspec">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
