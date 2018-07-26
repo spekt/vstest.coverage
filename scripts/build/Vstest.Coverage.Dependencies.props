@@ -6,5 +6,6 @@
     <MoqVersion>4.9.0</MoqVersion>
     <Microsoft_Build_Framework_Version>15.7.179</Microsoft_Build_Framework_Version>
     <Microsoft_Build_Utilities_Core_Version>15.7.179</Microsoft_Build_Utilities_Core_Version>
+    <Spekt_VSTest_Coverage_Report_Version>0.1.46</Spekt_VSTest_Coverage_Report_Version>
   </PropertyGroup>
 </Project>

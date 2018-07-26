@@ -1,0 +1,39 @@
+<!--
+***********************************************************************************************
+Coverage.Report.props
+
+WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
+          created a backup copy.  Incorrect changes to this file will make it
+          impossible to load or build your projects from the command-line or the IDE.
+
+***********************************************************************************************
+-->
+<Project TreatAsLocalProperty="TaskFolder;TaskAssembly">
+  <PropertyGroup>
+    <TaskFolder Condition=" '$(MSBuildRuntimeType)' == 'Core' ">netstandard2.0</TaskFolder>
+    <!-- TODO desktop project support -->
+    <!--<TaskFolder Condition=" '$(MSBuildRuntimeType)' != 'Core' ">net46</TaskFolder>-->
+    <TaskAssembly>$(MSBuildThisFileDirectory)..\tasks\$(TaskFolder)\Spekt.Vstest.Coverage.Report.dll</TaskAssembly>
+  </PropertyGroup>
+
+  <UsingTask TaskName="Spekt.VSTest.Coverage.Report.CLIReportTask" AssemblyFile="$(TaskAssembly)" />
+
+  <!-- Provide testlogger as a content -->
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)..\build\_common\Spekt.Vstest.Coverage.TestLogger.dll">
+      <Link>Spekt.Vstest.Coverage.TestLogger.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\build\_common\LcovGenerator.dll">
+      <Link>LcovGenerator.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>False</Visible>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)..\build\_common\CodeCoverageReader.dll">
+      <Link>CodeCoverageReader.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Visible>False</Visible>
+    </Content>
+  </ItemGroup>
+</Project>

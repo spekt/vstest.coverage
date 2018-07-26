@@ -52,6 +52,9 @@
         <PackageReference Include="Microsoft.NET.Test.Sdk">
           <Version>$(NETTestSdkPreviousVersion)</Version>
         </PackageReference>
+        <PackageReference Include="Spekt.VSTest.Coverage.Report">
+          <Version>$(Spekt_VSTest_Coverage_Report_Version)</Version>
+        </PackageReference>
       </ItemGroup>
     </When>
   </Choose>
