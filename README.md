@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.com/spekt/vstest.coverage.svg?branch=master)](https://travis-ci.com/spekt/vstest.coverage)
 [![Build status](https://ci.appveyor.com/api/projects/status/gds2rdqvixk5q6q5?svg=true)](https://ci.appveyor.com/project/spekt/vstest-coverage)
+![Maintenance](https://img.shields.io/maintenance/no/2018)
 
 ## Packages
 | Logger | Stable Package | Pre-release Package |
